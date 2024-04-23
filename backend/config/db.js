@@ -1,13 +1,13 @@
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 
-const connectDB = () => {
-  try {
-    const conn = mongoose
-      .connect(process.env.MONGO_URI)
-      .then(() => console.log('DATABASE CONNECTED SUCCESSFULLY'));
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
-  }
-};
+// const connectDB = () => {
+//   try {
+//     const conn = mongoose
+//       .connect(process.env.MONGO_URI)
+//       .then(() => console.log('DATABASE CONNECTED SUCCESSFULLY'));
+//   } catch (error) {
+//     console.error(`Error: ${error.message}`);
+//   }
+// };
 
-export default connectDB;
+// export default connectDB;
