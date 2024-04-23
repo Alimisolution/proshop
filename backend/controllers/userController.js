@@ -1,6 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
+import sendmails from '../mail.js';
 
 // @desc    Auth user & get token
 // @route   POST /api/users/auth
@@ -30,7 +31,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
-
+  sendmails(email);
   const userExists = await User.findOne({ email });
 
   if (userExists) {
