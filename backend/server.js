@@ -1,18 +1,21 @@
 import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
-import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-dotenv.config();
 
 const port = process.env.PORT || 5000;
+dotenv.config();
 
-connectDB();
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => console.log('DATABASE CONNECTED'))
+  .catch((err) => console.log('DATABASE NOT CONNECTED', err));
 
 const app = express();
 

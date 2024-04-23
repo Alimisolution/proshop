@@ -10,7 +10,10 @@ import connectDB from './config/db.js';
 
 dotenv.config();
 
-connectDB();
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => console.log('DATABASE CONNECTED'))
+  .catch((err) => console.log('DATABASE NOT CONNECTED', err));
 
 const importData = async () => {
   try {
