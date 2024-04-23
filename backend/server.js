@@ -2,7 +2,7 @@ import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import mongoose from 'mongoose';
+import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
@@ -12,10 +12,7 @@ dotenv.config();
 
 const port = process.env.PORT || 5000;
 
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log('DATABASE CONNECTED SUCCESSFULLY'))
-  .catch((err) => console.log('ERROR CONNECTING TO DATABASE', err));
+connectDB();
 
 const app = express();
 
